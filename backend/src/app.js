@@ -27,6 +27,14 @@ app.get("/all", async function(req, res) {
   res.send(items);
 });
 
+app.get("/delete/:name", async function (req, res) {
+  console.log("hello")
+  await Item.findOneAndDelete({ name: req.params.name})
+  console.log("Deleted Item " + req.params.name);
+  res.send("Deleted Item" + req.params.name);
+
+});
+
 app.listen(8000, function() {
   console.log("listening on http://localhost:8000");
 });
